@@ -1,0 +1,43 @@
+﻿<Window x:Class="Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <TextBox x:Name="book_name" Width="150" ></TextBox>
+            <TextBox x:Name="book_description" Margin="10 0" Width="200"></TextBox>
+            <ComboBox x:Name="year" Margin="10 0" Width="200"></ComboBox>
+            <Button Click="add_book_Click" Width="60" x:Name="add_book" Margin="10 0">Add Book</Button>
+            <Button Click="clear_Click" Width="50" x:Name="clear" Margin="10 0">Clear</Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10">
+            <TextBox x:Name="author_name" Width="200"></TextBox>
+            <Button Click="add_author_Click" Width="70" x:Name="add_author" Margin="10 0">Add Author</Button>
+            <Label x:Name="authors_count" Width="200"></Label>
+        </StackPanel>
+        <DataGrid x:Name="table" Grid.Row="2" AutoGenerateColumns="False" SelectionChanged="table_Selected">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Book ID" Width="50" Binding="{Binding id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Book Name" Width="200" Binding="{Binding name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Book Description" Width="200*" Binding="{Binding descrition}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Book Year" Width="100" Binding="{Binding year}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="3" Margin="10">
+            <TextBlock x:Name="selected_book" FontSize="20"></TextBlock>
+            <TextBlock x:Name="selected_year" FontSize="13"></TextBlock>
+            <TextBlock x:Name="authors_string" FontSize="15"></TextBlock>
+        </StackPanel>
+    </Grid>
+</Window>
